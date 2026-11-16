@@ -1,0 +1,62 @@
+[
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Channel.cc.o -c /home/mith/AProject/mymuduo/Channel.cc",
+  "file": "/home/mith/AProject/mymuduo/Channel.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Channel.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/CurrentThread.cc.o -c /home/mith/AProject/mymuduo/CurrentThread.cc",
+  "file": "/home/mith/AProject/mymuduo/CurrentThread.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/CurrentThread.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/DefaultPoller.cc.o -c /home/mith/AProject/mymuduo/DefaultPoller.cc",
+  "file": "/home/mith/AProject/mymuduo/DefaultPoller.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/DefaultPoller.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/EPollPoller.cc.o -c /home/mith/AProject/mymuduo/EPollPoller.cc",
+  "file": "/home/mith/AProject/mymuduo/EPollPoller.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/EPollPoller.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/EventLoop.cc.o -c /home/mith/AProject/mymuduo/EventLoop.cc",
+  "file": "/home/mith/AProject/mymuduo/EventLoop.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/EventLoop.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/InetAddress.cc.o -c /home/mith/AProject/mymuduo/InetAddress.cc",
+  "file": "/home/mith/AProject/mymuduo/InetAddress.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/InetAddress.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Logger.cc.o -c /home/mith/AProject/mymuduo/Logger.cc",
+  "file": "/home/mith/AProject/mymuduo/Logger.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Logger.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Poller.cc.o -c /home/mith/AProject/mymuduo/Poller.cc",
+  "file": "/home/mith/AProject/mymuduo/Poller.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Poller.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Tcpserver.cc.o -c /home/mith/AProject/mymuduo/Tcpserver.cc",
+  "file": "/home/mith/AProject/mymuduo/Tcpserver.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Tcpserver.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Timestamp.cc.o -c /home/mith/AProject/mymuduo/Timestamp.cc",
+  "file": "/home/mith/AProject/mymuduo/Timestamp.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Timestamp.cc.o"
+}
+]
