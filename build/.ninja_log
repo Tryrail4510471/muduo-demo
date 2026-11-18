@@ -1,12 +1,9 @@
 # ninja log v5
-1	19	1794827400754689800	CMakeFiles/mymuduo.dir/EventLoop.cc.o	cc298efbdc76f060
-3	28	1794827400764689201	CMakeFiles/mymuduo.dir/Tcpserver.cc.o	663711fed059b69d
-0	37	1794827400772688722	CMakeFiles/mymuduo.dir/CurrentThread.cc.o	e2ea1e09345aaec5
-4	261	1794827400996675306	CMakeFiles/mymuduo.dir/Timestamp.cc.o	80f5aef1140eb93e
-2	265	1794827401000675067	CMakeFiles/mymuduo.dir/Logger.cc.o	71497366aa0a1ac9
-2	265	1794827401001675007	CMakeFiles/mymuduo.dir/InetAddress.cc.o	6db264c5e71b375a
-0	349	1794827401084670043	CMakeFiles/mymuduo.dir/Channel.cc.o	b4e906e55e0a98cb
-1	387	1794827401122667770	CMakeFiles/mymuduo.dir/DefaultPoller.cc.o	e24b0f6d44f0b234
-3	423	1794827401158665617	CMakeFiles/mymuduo.dir/Poller.cc.o	bd64797ac9b6dc4e
-1	585	1794827401319655988	CMakeFiles/mymuduo.dir/EPollPoller.cc.o	3b551f3c8887b193
-585	657	1794827401391651682	/home/mith/AProject/mymuduo/lib/libmymuduo.so	3594889d65f7a159
+6	26	1794945069637318327	CMakeFiles/mymuduo.dir/Tcpserver.cc.o	663711fed059b69d
+5	541	1794945070154311827	CMakeFiles/mymuduo.dir/Poller.cc.o	bd64797ac9b6dc4e
+1	33	1794945069646318214	CMakeFiles/mymuduo.dir/CurrentThread.cc.o	e2ea1e09345aaec5
+4	279	1794945069890315146	CMakeFiles/mymuduo.dir/Logger.cc.o	71497366aa0a1ac9
+2	677	1794945070289310130	CMakeFiles/mymuduo.dir/EPollPoller.cc.o	3b551f3c8887b193
+4	324	1794945069937314555	CMakeFiles/mymuduo.dir/InetAddress.cc.o	6db264c5e71b375a
+6	366	1794945069979314027	CMakeFiles/mymuduo.dir/Timestamp.cc.o	80f5aef1140eb93e
+1	458	1794945070071312871	CMakeFiles/mymuduo.dir/DefaultPoller.cc.o	e24b0f6d44f0b234
