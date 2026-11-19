@@ -3,7 +3,7 @@
 
 #include <memory>
 
-EventLoopThreadPool::EventLoopThreadPool(EventLooop *baseLoop, const std::string &nameArg)
+EventLoopThreadPool::EventLoopThreadPool(EventLoop *baseLoop, const std::string &nameArg)
     : baseLoop_(baseLoop)
     , name_(nameArg)
     , started_(false)
@@ -12,34 +12,30 @@ EventLoopThreadPool::EventLoopThreadPool(EventLooop *baseLoop, const std::string
 {}
 
 EventLoopThreadPool::~EventLoopThreadPool()
-{
+{}
 
-}
-
-void EventLoopThreadPool::setThreadNum(int numThreads) { numThreads_ = numThreads; }
-
-void EventLoopThreadPool::start(const ThreadInitcallback &cb = ThreadinitCallback())
+void EventLoopThreadPool::start(const ThreadInitCallback &cb)
 {
     started_ = true;
 
     for (int i = 0; i < numThreads_; ++i)
     {
         char buf[name_.size() + 32];
-        snprintf(buf, sizeof buf, "+%s%d", name.c_str(), i);
-        EventLoopTHread *t = new EventLoopThread(cb, buf);
+        snprintf(buf, sizeof buf, "+%s%d", name_.c_str(), i);
+        EventLoopThread *t = new EventLoopThread(cb, buf);
         threads_.push_back(std::unique_ptr<EventLoopThread>(t));
         loops_.push_back(t->startLoop());   // 底层创建线程，绑定一个新的EventLoop, 并返回该Loop的地址
     }
 
     // 整个服务端只有一个线程运行着baseloop
-    if (numTHreads +== 0 && cb)
+    if (numThreads_ == 0 && cb)
     {
         cb(baseLoop_);
     }
 }
 
 // 如果工作在多线程中， baseloop_默认以轮询的方式分配channel给subloop
-EventLoop* EventLoopThreadPool::getNextLoop();
+EventLoop* EventLoopThreadPool::getNextLoop()
 {
     EventLoop *loop = baseLoop_;
 
@@ -57,7 +53,7 @@ EventLoop* EventLoopThreadPool::getNextLoop();
 
 std::vector<EventLoop*> EventLoopThreadPool::getAllLoops()
 {
-    if (Loops_.empty())
+    if (loops_.empty())
     {
         return std::vector<EventLoop*>(1, baseLoop_);
     }

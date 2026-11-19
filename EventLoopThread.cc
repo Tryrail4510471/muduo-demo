@@ -12,7 +12,7 @@ EventLoopThread::EventLoopThread(const ThreadInitCallback &cb,
     , thread_(std::bind(&EventLoopThread::threadFunc, this), name)
     , mutex_()
     , cond_()
-    , callback_( cb)
+    , callback_(cb)
 {
 
 }
@@ -36,7 +36,7 @@ EventLoop* EventLoopThread::startLoop()
         std::unique_lock<std::mutex> lock(mutex_);
         while (loop_ == nullptr)
         {
-            cond.wait(lock);
+            cond_.wait(lock);
         }
         loop = loop_;
     }
@@ -50,7 +50,7 @@ void EventLoopThread::threadFunc()
 
     if (callback_)
     {
-        callback_(&cb);
+        callback_(&loop);
     }
 
     {

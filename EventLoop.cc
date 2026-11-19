@@ -28,16 +28,16 @@ EventLoop::EventLoop()
     : looping_(false)
     , quit_(false)
     , callingPendingFunctors_(false)
-    . threadId_(CurrentThread::tid())
+    , threadId_(CurrentThread::tid())
     , poller_(Poller::newDefaultPoller(this))
-    , wakeupfd_(createEventfd())
-    , wakeupChannel_(new Channel(this, wakeupfd_))
+    , wakeupFd_(createEventfd())
+    , wakeupChannel_(new Channel(this, wakeupFd_))
     , currentActiveChannel_(nullptr)
 {
     LOG_DEBUG("EventLoop created %p in thread %d \n", this, threadId_)
     if (t_loopInThisThread)
     {
-        LOG_FATAL("Another EventLoop %p exists in this thread%d \n", t_loopInThisThread. threadId_);
+        LOG_FATAL("Another EventLoop %p exists in this thread%d \n", t_loopInThisThread, threadId_);
     }
     else
     {
@@ -54,7 +54,7 @@ EventLoop::~EventLoop()
 {
     wakeupChannel_->disableAll();
     wakeupChannel_->remove();
-    ::clase(wakeupFd_);
+    ::close(wakeupFd_);
     t_loopInThisThread = nullptr;
 }
 
@@ -66,7 +66,7 @@ void EventLoop::loop()
 
     LOG_INFO("EventLoop %p start looping \n", this);
 
-    while(!quit)
+    while(!quit_)
     {
         activeChannels_.clear();
         pollReturnTime_ = poller_->poll(kPollTimeMs, &activeChannels_);
@@ -92,7 +92,7 @@ void EventLoop::quit()
 {
     quit_ = true;
 
-    if (!isInLoopThisThread())  // 如果在其他线程中，调用的quit 在一个sublooop中调用了mainloop的quit
+    if (!isInLoopThread())  // 如果在其他线程中，调用的quit 在一个sublooop中调用了mainloop的quit
     {
         wakeup();
     }
@@ -114,7 +114,7 @@ void EventLoop::runInLoop(Functor cb)
 void EventLoop::queueInLoop(Functor cb)
 {
     {
-        std::unique_looc<std::mutrex> lock(mutex_);
+        std::unique_lock<std::mutex> lock(mutex_);
         pendingFunctors_.emplace_back(cb);
     }
 
@@ -132,18 +132,18 @@ void EventLoop::handleRead()
     ssize_t n = read(wakeupFd_, &one, sizeof one);
     if (n != sizeof one)
     {
-        LOG_ERROR("EventLoop::handleRead() reads %d bytes instead of 8", n);
+        LOG_ERROR("EventLoop::handleRead() reads %zd bytes instead of 8", n);
     }
 }
 
 // 用来唤醒loop所在的线程 向wakeupfd_写一个数据
-viud EventLoop::wakeup()
+void EventLoop::wakeup()
 {
     uint64_t one = 1;
     ssize_t n = write(wakeupFd_, &one, sizeof one);
     if (n != sizeof one)
     {
-        LOS_ERROR("EventLoop::wakeup() writes %lu bytes instead of 8 \n", n)
+        LOG_ERROR("EventLoop::wakeup() writes %lu bytes instead of 8 \n", n);
     }
 }
 
@@ -158,7 +158,7 @@ void EventLoop::removeChannel(Channel *channel)
 }
 bool EventLoop::hasChannel(Channel *channel)
 {
-    poller_->hasChannel(channel);
+    return poller_->hasChannel(channel);
 }
 
 void EventLoop::doPendingFunctors() // 执行回调
@@ -172,7 +172,7 @@ void EventLoop::doPendingFunctors() // 执行回调
     }
     
     // 调用相应回调
-    for (const Functor& functor : funtors)
+    for (const Functor& functor : functors)
     {
         functor();  // 执行当前loop需要执行的回调操作
     }

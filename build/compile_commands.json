@@ -1,6 +1,24 @@
 [
 {
   "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Acceptor.cc.o -c /home/mith/AProject/mymuduo/Acceptor.cc",
+  "file": "/home/mith/AProject/mymuduo/Acceptor.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Acceptor.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Buffer.cc.o -c /home/mith/AProject/mymuduo/Buffer.cc",
+  "file": "/home/mith/AProject/mymuduo/Buffer.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Buffer.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Callbacks.cc.o -c /home/mith/AProject/mymuduo/Callbacks.cc",
+  "file": "/home/mith/AProject/mymuduo/Callbacks.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Callbacks.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
   "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Channel.cc.o -c /home/mith/AProject/mymuduo/Channel.cc",
   "file": "/home/mith/AProject/mymuduo/Channel.cc",
   "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Channel.cc.o"
@@ -67,9 +85,15 @@
 },
 {
   "directory": "/home/mith/AProject/mymuduo/build",
-  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/Tcpserver.cc.o -c /home/mith/AProject/mymuduo/Tcpserver.cc",
-  "file": "/home/mith/AProject/mymuduo/Tcpserver.cc",
-  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/Tcpserver.cc.o"
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/TcpConnection.cc.o -c /home/mith/AProject/mymuduo/TcpConnection.cc",
+  "file": "/home/mith/AProject/mymuduo/TcpConnection.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/TcpConnection.cc.o"
+},
+{
+  "directory": "/home/mith/AProject/mymuduo/build",
+  "command": "/usr/bin/c++ -Dmymuduo_EXPORTS  -g -std=c++11 -fPIC -g -fPIC -o CMakeFiles/mymuduo.dir/TcpServer.cc.o -c /home/mith/AProject/mymuduo/TcpServer.cc",
+  "file": "/home/mith/AProject/mymuduo/TcpServer.cc",
+  "output": "/home/mith/AProject/mymuduo/build/CMakeFiles/mymuduo.dir/TcpServer.cc.o"
 },
 {
   "directory": "/home/mith/AProject/mymuduo/build",

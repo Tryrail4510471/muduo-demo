@@ -1,12 +1,23 @@
+/**
+    ChannelList activeChannels_
+
+    std::unique_ptr<Poller> poller
+    int wakeupFd -> loop
+    std::unique_ptr<Channel> wakeupChannel;
+*/
+
 #pragma once
 
 #include <functional>
 #include <vector>
 #include <atomic>
 #include <mutex>
+#include <memory>
 
 #include "noncopyable.h"
 #include "Timestamp.h"
+#include "CurrentThread.h"
+
 class Channel;
 class Poller;
 
@@ -39,11 +50,9 @@ public:
     void removeChannel(Channel *channel);
     bool hasChannel(Channel *channel);
 
-    void doPendingFunctors();
-
     // 判断EventLoop的对象是否在自己的线程里面
     bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); }
-private:
+private: 
     void handleRead();  // wakeup
     void doPendingFunctors();   // 执行回調
 
@@ -59,10 +68,9 @@ private:
     int wakeupFd_;      // 主要作用，当mainliio获取一个新用户的channel,通过轮询算法选择一个subloop,通过该成员唤醒subloop
     std::unique_ptr<Channel> wakeupChannel_;
 
-    ChannelList acticeChannels_;
-    Channel *currentActiveCHannel_; // 用于assert
+    ChannelList activeChannels_;
+    Channel *currentActiveChannel_; // 用于assert
 
-    std::atomic_bool callingPendingFunctors_;   // 表示当前loop是否有需要执行的回調操作
     std::vector<Functor> pendingFunctors_;      // 存储loop需要执行的全部操作
     std::mutex mutex_;                          // 保护调用vector容器的线程安全操作
 };

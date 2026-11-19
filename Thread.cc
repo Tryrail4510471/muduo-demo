@@ -1,10 +1,14 @@
+/**
+    事件线程
+*/
+
 #include "Thread.h"
 #include "CurrentThread.h"
 
 #include <semaphore.h>
 
 std::atomic_int Thread::numCreated_(0);
-Thread::Thread(ThreadFunc func, const std::string &name = std::string())
+Thread::Thread(ThreadFunc func, const std::string &name)
     : started_(false)
     , joined_(false)
     , tid_(0)

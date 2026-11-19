@@ -6,6 +6,7 @@
 #include <functional>
 #include <mutex>
 #include <condition_variable>
+#include <string>
 
 
 class EventLoop;
@@ -13,10 +14,10 @@ class EventLoop;
 class EventLoopThread : noncopyable
 {
 public:
-    using THreadInitCallback = std::function<void(EventLoop*)>;
+    using ThreadInitCallback = std::function<void(EventLoop*)>;
 
-    EventLoopTHread(const ThreadInitCallback &cb = ThreadInitCallback(), 
-        const std::string &name = string());
+    EventLoopThread(const ThreadInitCallback &cb = ThreadInitCallback(), 
+        const std::string &name = std::string());
     ~EventLoopThread();
     
     EventLoop* startLoop();
@@ -28,5 +29,5 @@ private:
     Thread thread_;
     std::mutex mutex_;
     std::condition_variable cond_;
-    THreadInitCallback callback_;
+    ThreadInitCallback callback_;
 };

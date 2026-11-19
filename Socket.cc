@@ -5,17 +5,17 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#iniclude <strings.h>
+#include <strings.h>
+#include <netinet/tcp.h>
 
 Socket::~Socket()
 {
     close(sockfd_);
 }
 
-int fd() const { return sockfd_; }
 void Socket::bindAddress(const InetAddress &Localaddr)
 {
-    if (0 != bind(sockfd_, (sockaddr*)localaddr.getSockADdr(), sizeof(sockaddr_in)));
+    if (0 != bind(sockfd_, (sockaddr*)Localaddr.getSockAddr(), sizeof(sockaddr_in)));
     {
         LOG_FATAL("bind sockfd:%d fail \n", sockfd_);
     }
@@ -23,7 +23,7 @@ void Socket::bindAddress(const InetAddress &Localaddr)
 
 void Socket::listen()
 {
-    if (0 != ::listen(sockfd, 1024))
+    if (0 != ::listen(sockfd_, 1024))
     {
         LOG_FATAL("listen sockfd:%d fail \n", sockfd_);
     }
@@ -34,9 +34,9 @@ int Socket::accept(InetAddress *peeraddr)
 {
     sockaddr_in addr;
     socklen_t len;
-    bzero(&addr, sizrof addr);
+    bzero(&addr, sizeof addr);
     int connfd = ::accept(sockfd_, (sockaddr*)&addr, &len);
-    if (confd >= 0)
+    if (connfd >= 0)
     {
         peeraddr->setSockAddr(addr);
     }
@@ -62,17 +62,17 @@ void Socket::setTcpNoDelay(bool on)
 void Socket::setReuseAddr(bool on)
 {
     int optval = on ? 1 : 0;
-    ::setsockopt(sockfd_, SQL_SOCKET, SO_REUSEADDR, &optval, sizeof optval);
+    ::setsockopt(sockfd_, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof optval);
 }
 
 void Socket::setReusePort(bool on)
 {
     int optval = on ? 1 : 0;
-    ::setsockopt(sockfd_, SQL_SOCKET, SO_REUSEPORT, &optval, sizeof optval);
+    ::setsockopt(sockfd_, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof optval);
 }
 
 void Socket::setKeepAlive(bool on)
 {
     int optval = on ? 1 : 0;
-    ::setsockopt(sockfd_, SQL_SOCKET, SO_KEEPALIVE, &optval, sizeof optval);
+    ::setsockopt(sockfd_, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof optval);
 }

@@ -5,7 +5,8 @@
 
 namespace CurrentThread
 {
-    extern __thread int t_cachedTid = 0;
+    // 避免重复定义导致链接失败:外部变量在.h中声明，在.c中定义
+    extern __thread int t_cachedTid;
 
     void cachedTid();
 

@@ -22,7 +22,7 @@ Channel::~Channel()
 {
 }
 
-// 调用的时间很关键
+// 一个TcpConnection新链接创建的时候 TcpConnection => Channel 强智能指针维持生命周期
 void Channel::tie(const std::shared_ptr<void> &obj)
 {
     tie_ =obj;

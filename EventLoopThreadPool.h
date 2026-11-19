@@ -1,8 +1,12 @@
+/**
+    getNextLoop() : 轮询获取下一个subLoop
+    一个thread对于一个loop => one loop per thread
+*/
 #pragma once
 
 #include "noncopyable.h"
 
-#include <funcitonal>
+#include <functional>
 #include <string>
 #include <vector>
 #include <memory>
@@ -15,12 +19,12 @@ class EventLoopThreadPool : noncopyable
 public:
     using ThreadInitCallback = std::function<void(EventLoop*)>;
 
-    EventLoopThreadPool(EventLooop *baseLoop, const std::string &nameArg);
+    EventLoopThreadPool(EventLoop *baseLoop, const std::string &nameArg);
     ~EventLoopThreadPool();
 
     void setThreadNum(int numThreads) { numThreads_ = numThreads; }
 
-    void start(const ThreadInitcallback &cb = ThreadinitCallback());
+    void start(const ThreadInitCallback &cb = ThreadInitCallback());
 
     // 如果工作在多线程中， baseloop_默认以轮询的方式分配channel给subloop
     EventLoop* getNextLoop();
@@ -32,11 +36,11 @@ public:
 private:
 
     EventLoop *baseLoop_; // EventLoop loop;
-    string name_;
+    std::string name_;
     bool started_;
     int numThreads_;
     int next_;
-    std:;vector<std::unique_ptr<EventLoopTHread>> threads_;
+    std::vector<std::unique_ptr<EventLoopThread>> threads_;
     std::vector<EventLoop*> loops_;
 
 };

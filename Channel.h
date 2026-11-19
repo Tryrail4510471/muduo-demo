@@ -1,3 +1,6 @@
+/**
+    fd, events, revents, callbacks  两种channel listenfd-acceptorChannel  connfd-connectionChannel
+*/
 #pragma once
 
 #include "noncopyable.h"
@@ -40,7 +43,7 @@ class EventLoop;
 
     void enableReading() { events_ |= kReadEvent; update(); }
     void disableReading() { events_ &= ~kReadEvent; update(); }
-    void enableWritting() { events_ |= kWriteEvent; update(); }
+    void enableWriting() { events_ |= kWriteEvent; update(); }
     void disableWriting() { events_ &= !kWriteEvent; update(); }
     void disableAll() { events_ = kNoneEvent; update(); }
 

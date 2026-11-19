@@ -1,9 +1,11 @@
 #pragma once
 
+#include "InetAddress.h"
+
 class Socket
 {
 public:
-    explict Socket(int sockfd)
+    explicit Socket(int sockfd)
         : sockfd_(sockfd)
     {
 
@@ -11,7 +13,7 @@ public:
 
     ~Socket();
     
-    int fd() ocnst { return sockfd_; }
+    int fd() const { return sockfd_; }
     void bindAddress(const InetAddress &Localaddr);
     void listen();
     int accept(InetAddress *peeraddr);

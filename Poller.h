@@ -1,7 +1,13 @@
+/**
+    事件分发器 Demultiplex    
+    std::unordered_map<int, Channel*> channels 保存封装好的事件
+*/
+
 #pragma once
 
 #include "Timestamp.h"
 #include "Channel.h"
+
 #include <vector>
 #include <unordered_map>
 
